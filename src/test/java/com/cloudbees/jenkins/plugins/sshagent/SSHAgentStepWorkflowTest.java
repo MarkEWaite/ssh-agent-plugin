@@ -270,7 +270,7 @@ public class SSHAgentStepWorkflowTest extends SSHAgentBase {
             WorkflowJob job = r.createProject(WorkflowJob.class, "sshAgentDocker");
             job.setDefinition(new CpsFlowDefinition(""
                 + "node('" + r.createSlave().getNodeName() + "') {\n"
-                + "  withDockerContainer('kroniak/ssh-client') {\n"
+                + "  withDockerContainer('kroniak/ssh-client:3.22') {\n"
                 + "    sh 'ssh-agent -k || :'\n"
                 + "    sshagent(credentials: ['" + CREDENTIAL_ID + "']) {\n"
                 + "      sh 'env | sort'\n"
